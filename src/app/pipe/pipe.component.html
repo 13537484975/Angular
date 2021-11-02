@@ -1,0 +1,14 @@
+<div style="font-size:30px">管道：</div>
+<!-- 1.过管道操作符( | )流动 到右侧的 Date 管道函数中 -->
+<!-- <p>The double 11 day is {{ birthday | date }}</p> -->
+
+<!-- 2.带参数date:'yyyy-MM-dd' -->
+<!-- <p>The double 11 day is {{ birthday |date:'yyyy-MM-dd' }}</p> -->
+
+<!-- 3.切换 -->
+<p>The double 11 day is {{ birthday | date:format }}</p>
+<button (click)="toggle()">toggle</button>
+
+<!-- 4.自定义管道 -->
+
+<hr>

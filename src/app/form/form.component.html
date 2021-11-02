@@ -1,0 +1,26 @@
+<!-- 1.模板变量#box 事件修饰符 -->
+<!-- <div> 
+    <h3>请输入：</h3> 
+    <input type="text" #box (keyup.enter)="onEnter(box.value)"> 
+    <p>{{values}}</p>
+</div> -->
+
+
+<!-- 2.使用 NgModel 双向绑定 -->
+<!-- <div>
+    <input type="text" [(ngModel)]="user.name">
+    <p>名字：{{user.name}}</p>
+</div> -->
+
+<!-- 通过ngModel跟踪修改状态与有效性验证 -->
+<!-- <input type="text" [(ngModel)]="user.name" name="name" required #spy> 
+<p>名字：{{user.name}} - {{spy.className}}</p> -->
+<div style="font-size: 30px;">表单：</div>
+<input type="text" [(ngModel)]="user.name" name="name" required minlength="4" #name="ngModel">
+<!-- 3.模板驱动表单校验 valid  dirty touched errors -->
+<p> 是否通过验证valid: {{name.valid}} </p> 
+<p> 输入框值是否变化dirty: {{name.dirty}} </p> 
+<p> 输入框是否触摸touched: {{name.touched}}</p>
+<p> errors: {{name.errors | json}}</p>
+
+<hr>

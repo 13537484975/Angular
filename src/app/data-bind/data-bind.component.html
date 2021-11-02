@@ -1,0 +1,39 @@
+<div style="font-size: 28px;">数据绑定(属性绑定、事件绑定、双向绑定)：</div>
+
+<img [src]="imageUrl">
+<br>
+
+<div>
+    <button (click)="hello()">click事件</button>
+    <!-- 使用$event 传入 DOM 事件对象 -->
+    <button (click)="show($event)">event参数</button>
+</div>
+<br>
+
+<!-- 双向数据绑定[ngModel] -->
+<div> 
+    <div>自动实现双向数据绑定：</div>
+    <input type="text" [(ngModel)]="Text">
+    <span>{{Text}}</span>
+</div>
+
+<!-- 手动实现双向数据绑定 input事件监听输入框变化 实时-->
+<div>
+    <div>手动实现双向数据绑定：</div>
+    <input [value]="num" (input)="changValue($event)">
+    <span>{{num}}</span>
+</div>
+
+<!-- 模板变量
+     模板引用变量通常用来引用模板中的某个 DOM 元素，使用井号 (#) 来声明引用变量。
+     #phone的意思就是声明一个名叫 phone 的变量来引用<input>元素。也可以用 ref-前缀代替#
+ -->
+<div style="font-size: 28px;">模板变量：</div>
+<div>
+    <input type="text" #phone>
+    <button (click)="show2(phone.value)">获取输入框的值</button>
+</div>
+
+<!-- Angular 的安全导航操作符 (?.) 是一种流畅而便利的方式，用来保护出现在属性路径中 null 和 undefined 值。 
+    下例中，当 people 为空时，保护视图渲染器，让它免于失败 -->
+<hr>
