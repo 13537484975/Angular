@@ -1,5 +1,5 @@
 import { Component, OnInit, Input,EventEmitter,Output } from '@angular/core';
-//父子件
+//父组件
 @Component({
   selector: 'app-hello-parent',
   template:`

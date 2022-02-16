@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hello-world',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelloWorldComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+     this.route.queryParams.subscribe((res)=>{
+       console.log(res)//获取传过来的参数 （函数式路由跳转）
+    })
   }
-
+   
 }

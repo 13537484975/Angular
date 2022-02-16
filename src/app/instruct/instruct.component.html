@@ -1,23 +1,44 @@
 <div style="font-size: 28px;">指令:</div>
 <!-- *ngIf -->
-<p *ngIf="true">*ngIf为true显示组件</p>
+<div>*ngIf:</div>
+<p *ngIf="true">ngIf为true显示组件</p>
 <p *ngIf="false">不显示组件</p>
+<div>
+    <div *ngIf="true;else F" >
+        1111111111111111
+    </div>
+    <ng-template #F>
+        2222222222222222222
+    </ng-template>
+</div>
+<br>
+<div>
+    <div *ngIf="false; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>one</ng-template>
+    <ng-template #elseBlock>two</ng-template>
+</div>
+<br>
+
 <!-- *ngFor -->
+<div>*ngFor:</div>
 <ul>
     <li *ngFor="let item of citys">{{item}}</li>
 </ul>
 <!-- *ngFor全特性应用 trackBy可带来性能上的提升-->
 <ul> 
     <li *ngFor="let item of fruits; let index=index; let odd=odd;">
-        {{item.id}}->名称：{{item.name}} - 索引：{{index}} - 基数行：{{odd}}
+        {{item.id}}->名称：{{item.name}} - 索引：{{index}} - 偶数行：{{odd}}
     </li>
 </ul>
+
 <!-- ngSwitch指令由：ngSwitch ngSwitchCase ngSwitchDefault组成-->
+<div>*ngSwitch:</div>
 <div [ngSwitch]="char">
     <p *ngSwitchCase="'A'">char is A</p>
     <p *ngSwitchCase="'B'">char is B</p>
     <p *ngSwitchDefault>char is not A and B</p>
 </div>
+
 <!-- 样式[style.属性值]和[ngStyle] -->
 <p [style.color]="'red'">hello css</p>
 <p [style.color]="true?'yellow':'blue'">hello css111</p>
@@ -27,21 +48,22 @@
 <button [style.font-size.%]="100">Red</button>
 <br>
 <!-- [ngStyle] 可传入一个对象-->
-<div [ngStyle]="{'font-size':'50px','color':'pink'}">Red</div>
+<div [ngStyle]="{'font-size':'50px','color':'blue'}">Red</div>
 <div [ngStyle]="cssObj">cssObj</div>
 
 <!-- class和[class]需注意"'container'" -->
-<div class="container">class样式</div>
+<div class="container">class样式1</div>
 <div [class]="'container'">class样式2</div>
 <!-- 通过[class]形式可以做样式逻辑判断 true false可定义为一个变量-->
 <div class="box" [class.container]='true'>[class.container]='true'是添加一个container类进而控制样式</div>
 <div class="box" [class.container]='false'>[class.container]='false'删除container类</div>
 <!-- [ngClass] -->
-<div [ngClass]="{box:true, container:false}">hello</div>
+<div [ngClass]="{'box':true, 'container':false}">hello</div>
 <!-- ngNonBindable告诉 Angular 不要编译或者绑定页面中的某个特殊部分 -->
 <div ngNonBindable>
-    使用 {{content}} 获取值
+    使用 {{content}} 获取值     原样输出
 </div>
+<br>
 
 <!-- 自定义指令 -->
 <div Hightlight>1.我是自定义指令</div>

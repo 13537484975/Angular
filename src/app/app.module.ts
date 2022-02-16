@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 // 路由模块
 // import { RouterModule, Routes } from '@angular/router';
@@ -59,6 +59,7 @@ import { RouterFunctionComponent } from './router-function/router-function.compo
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
     // RouterModule.forRoot(appRoutes)//路由

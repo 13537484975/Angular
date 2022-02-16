@@ -1,3 +1,4 @@
+<div style="font-size:30px;">表单：</div>
 <!-- 1.模板变量#box 事件修饰符 -->
 <!-- <div> 
     <h3>请输入：</h3> 
@@ -14,13 +15,59 @@
 
 <!-- 通过ngModel跟踪修改状态与有效性验证 -->
 <!-- <input type="text" [(ngModel)]="user.name" name="name" required #spy> 
-<p>名字：{{user.name}} - {{spy.className}}</p> -->
-<div style="font-size: 30px;">表单：</div>
-<input type="text" [(ngModel)]="user.name" name="name" required minlength="4" #name="ngModel">
-<!-- 3.模板驱动表单校验 valid  dirty touched errors -->
-<p> 是否通过验证valid: {{name.valid}} </p> 
-<p> 输入框值是否变化dirty: {{name.dirty}} </p> 
-<p> 输入框是否触摸touched: {{name.touched}}</p>
-<p> errors: {{name.errors | json}}</p>
+<p>名字：{{user.name}} - {{spy.className}}</p>  ng-untouched ng-pristine ng-invalid-->
 
+<!-- <div style="font-size: 30px;">表单：</div>
+<div>模板驱动表单校验:</div>
+<input type="text" [(ngModel)]="user.name" name="name" required minlength="4" #name="ngModel"> -->
+<!-- 3.模板驱动表单校验 valid  dirty touched errors -->
+<!-- <p> 是否通过验证valid: {{name.valid}} </p> 
+     <p> 输入框值是否变化dirty: {{name.dirty}} </p> 
+     <p> 输入框是否触摸touched: {{name.touched}}</p>
+     <p> errors: {{name.errors | json}}</p>
+<br> -->
+<!-- 表单提交 -->
+<!-- <div>表单提交：</div>
+<form (ngSubmit)="onSubmit()"> 
+    <input type="text" [(ngModel)]="user.name" name="name" required minlength="4"  #name="ngModel"> 
+    <button type="submit" [disabled]="!name.valid">提交</button> 
+</form> 
+<br> -->
+
+<!-- 4.响应式表单校验  ReactiveFormsModule 需要提前引入根模块-->
+<!-- <form [formGroup]="myGroup" (ngSubmit)="onSubmit()"> 
+    <input type="text"  name="name"  formControlName="name"> 
+    <input type="text"  name="pwd"  formControlName="pwd"> 
+    <button type="submit">提交</button> 
+</form> -->
+
+<!-- 5.FormBuilder创建 FormGroup  -->
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()"> 
+    账号：<input type="text"   formControlName="name"> <br>
+    密码：<input type="text"   formControlName="pwd"> 
+    <div formGroupName="address"> 
+        <div>
+            <label for="">街道：</label> 
+            <input type="text" formControlName="street"> 
+        </div> 
+        <div> 
+            <label for="">城市：</label> 
+            <input type="text" formControlName="city"> 
+        </div> 
+    </div> 
+    <button type="button" (click)="forceReset()">重置为空</button> 
+    <button type="button" (click)="defaultReset()">重置默认数据 </button> 
+    <button type="submit">提交</button> 
+</form>
+<div>
+    <p> {{userForm.value | json}} </p> 
+    <p> {{userForm.get('name')!.value}} </p> 
+    <p> {{userForm.get('pwd')!.value}} </p> 
+    <p> {{userForm.get('address.street')!.value}} </p> 
+    <p> {{userForm.get('address.city')!.value}} </p> 
+    <p> ----------------------- </p> 
+    <p> {{userForm.status}} </p> 
+    <p> {{userForm.pristine}} </p> 
+    <p> {{userForm.untouched}} </p> 
+</div>
 <hr>

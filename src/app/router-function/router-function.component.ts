@@ -13,8 +13,11 @@ export class RouterFunctionComponent implements OnInit {
   }
 
   helloUrl(){
-    this.router.navigateByUrl('hello')
+    // this.router.navigateByUrl('hello')
+    this.router.navigate(['hello'],{queryParams:{id:2,a:3,b:4}})
     // this.router.navigateByUrl('hello/routerparams/12') 路由传参
+    // this.router.navigateByUrl(['hello/routerparams','12']) 与上一一样
+
     // this.router.navigateByUrl('hello',{skipLocationChange:true}) 页面跳转但路由不发生变化
   }
 
